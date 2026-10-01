@@ -97,21 +97,53 @@
         {
 
             double num1, num2;
+            string symbol;
 
             Console.WriteLine("Welcome to the calculator.");
             Console.WriteLine();
             Console.WriteLine("Please input your first number");
             double.TryParse(Console.ReadLine(), out num1);
             Console.WriteLine();
+            Console.WriteLine("Please input your symbol (+,-,*,/, sqrt)");
+            symbol = Console.ReadLine().ToLower();
+            Console.WriteLine();
             Console.WriteLine("Please input your second number");
             double.TryParse(Console.ReadLine(), out num2);
+            Console.WriteLine();
+            if (symbol == "+")
+            {
+                Console.WriteLine(num1 + num2);
+            }
+            else if (symbol == "-")
+            {
+                Console.WriteLine(num1 - num2);
+            }
+            else if (symbol == "*")
+            {
+                Console.WriteLine(num1 * num2);
+            }
+            else if (symbol == "/")
+            {
+                Console.WriteLine(num1 / num2);
+            }
+            else if (symbol == "sqrt")
+            {
+                Console.WriteLine(Math.Pow(num1, 1.0 / num2));   //you get NaN by sqrt negative numbers because of imaginary nums or smth ig
+            }
+
+
         }
 
+        static void part3()
+        {
 
+        }
 
         static void Main(string[] args)
         {
-            part1();
+
+            part2();
+
         }
     }
 }
