@@ -102,15 +102,24 @@
             Console.WriteLine("Welcome to the calculator.");
             Console.WriteLine();
             Console.WriteLine("Please input your first number");
-            double.TryParse(Console.ReadLine(), out num1);
+            while (!double.TryParse(Console.ReadLine(), out num1))
+            {
+                Console.WriteLine("You did not insert a number. Please try again.");
+            }
             Console.WriteLine();
             Console.WriteLine("Please input your symbol (+,-,*,/, sqrt)");
             symbol = Console.ReadLine().ToLower();
             Console.WriteLine();
             Console.WriteLine("Please input your second number");
-            double.TryParse(Console.ReadLine(), out num2);
+            while (!double.TryParse(Console.ReadLine(), out num2))
+            {
+                Console.WriteLine("You did not insert a number. Please try again.");
+            }
             Console.WriteLine();
-            if (symbol == "+")
+
+            bool done = false;
+          
+                if (symbol == "+")
             {
                 Console.WriteLine(num1 + num2);
             }
@@ -131,12 +140,11 @@
                 Console.WriteLine(Math.Pow(num1, 1.0 / num2));   //you get NaN by sqrt negative numbers because of imaginary nums or smth ig
             }
 
-
         }
 
         static void part3()
         {
-
+            Console.WriteLine("Hello, I will be asking you 4 or more random questions to test your knowledege.");
         }
 
         static void Main(string[] args)
