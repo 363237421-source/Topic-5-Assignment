@@ -3,7 +3,7 @@
     internal class Program
     {
 
-        static void Typer(string text)
+        static void Typer(string text) //extra
         {
             for (int i = 0; i < text.Length; i++)
             {
@@ -14,7 +14,7 @@
             Console.WriteLine();
         }
 
-        static void TyperInd(string text)
+        static void TyperInd(string text)  //extra extra
         {
             for (int i = 0; i < text.Length; i++)
             {
@@ -82,14 +82,12 @@
                     done = false;
                     Typer("You have not selected a planet that was listed. Please try again.");
                 }
-
-                Console.WriteLine();
-
-                Console.WriteLine("Press enter to begin part 2");
-                Console.ReadLine();
-                Console.Clear();
             }
-            
+            Console.WriteLine();
+
+            Console.WriteLine("Press enter to begin part 2");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         static void part2()
@@ -98,6 +96,7 @@
 
             double num1, num2;
             string symbol;
+            string wordAns = "The answer is "; //Helps me
 
             Console.WriteLine("Welcome to the calculator.");
             Console.WriteLine();
@@ -109,6 +108,12 @@
             Console.WriteLine();
             Console.WriteLine("Please input your symbol (+,-,*,/, sqrt)");
             symbol = Console.ReadLine().ToLower();
+            while (symbol != "+" && symbol != "-" && symbol != "*" && symbol != "/" && symbol != "sqrt")
+            {
+                Console.WriteLine("You did not insert the right symbol, please try again");
+                symbol = Console.ReadLine();
+            }
+
             Console.WriteLine();
             Console.WriteLine("Please input your second number");
             while (!double.TryParse(Console.ReadLine(), out num2))
@@ -119,38 +124,117 @@
 
             bool done = false;
           
-                if (symbol == "+")
+            if (symbol == "+")
             {
-                Console.WriteLine(num1 + num2);
+                Console.WriteLine(wordAns + (num1 + num2));
             }
             else if (symbol == "-")
             {
-                Console.WriteLine(num1 - num2);
+                Console.WriteLine(wordAns + (num1 - num2));
             }
             else if (symbol == "*")
             {
-                Console.WriteLine(num1 * num2);
+                Console.WriteLine(wordAns + (num1 * num2));
             }
             else if (symbol == "/")
             {
-                Console.WriteLine(num1 / num2);
+                Console.WriteLine(wordAns + (num1 / num2));
             }
             else if (symbol == "sqrt")
             {
-                Console.WriteLine(Math.Pow(num1, 1.0 / num2));   //you get NaN by sqrt negative numbers because of imaginary nums or smth ig
+                Console.WriteLine(wordAns + Math.Pow(num1, 1.0 / num2));   //you get NaN by sqrt negative numbers because of imaginary nums or smth ig
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Press enter for part 3");
+            Console.ReadLine();
+            Console.Clear();
 
         }
 
         static void part3()
         {
-            Console.WriteLine("Hello, I will be asking you 4 or more random questions to test your knowledege.");
+            int points = 0;
+            string answer;
+
+            Typer("Hello, I will be asking you 4 questions to test your knowledege.");
+            Typer("Press enter to begin");
+            Console.WriteLine();
+            Typer("First question...");
+            Typer("What is the capital of France?");
+            answer = Console.ReadLine().ToLower();
+            if (answer == "paris")
+            {
+                Typer("Correct! 1/4 questions answered.");
+                points =+ 1;
+            }
+            else
+            {
+                Typer("Wrong! 1/4 questions answered.");
+            }
+            
+            Console.WriteLine();
+            Typer("Next question...");
+            Typer("What time does school start?");
+            answer = Console.ReadLine();
+            if (answer == "8:20")
+            {
+                Typer("Correct! 2/4 questions answered.");
+                points =+ 1;
+            }
+            else
+            {
+                Typer("Wrong! 2/4 questions answered.");
+            }
+
+            Console.WriteLine();
+            Typer("Next question...");
+            Typer("What is einsteins most famous equation? (Write it exactly how the formula is shown)");
+            answer = Console.ReadLine();
+            if (answer == "E=mc^2")
+            {
+                Typer("Correct! 3/4 questions answered.");
+                points =+ 1;
+            }
+            else
+            {
+                Typer("Wrong! 3/4 questions answered.");
+            }
+
+            Console.WriteLine();
+            Typer("Warning, this question is very hard, press enter if you are ready...");
+            Console.ReadLine();
+            Typer("Alright then, how many digits of pi is needed to calculate the circumference");
+            Typer("of the entire observable universe with an error margin smaller than a single hydrogen atom?");
+            answer = Console.ReadLine();
+            if (answer == "39" || answer == "40")   //ANSWER HERE
+            {
+                Typer("Wow! You got that correct! 4/4 questions answered press enter to see how well you did.");
+                points =+ 1;
+            }
+            else
+            {
+                Typer("Wrong...");
+                Thread.Sleep(1000);
+                Typer("...");
+                Thread.Sleep(1000);
+                Typer("...");
+                Thread.Sleep(1000);
+                Typer("Anyways press enter to see how well you did.");
+            }
+            Console.ReadLine();
+
+            Console.WriteLine();
+            TyperInd("Thank you for answering my questions. Out of the 4 questions you got " + points + " correct");
+            Thread.Sleep(4000);
+            TyperInd(".............. you may now leave. =)");
         }
 
-        static void Main(string[] args)
+        static void Main(string[] args)   //Methods being executed eher
         {
-
+            part1();
             part2();
+            part3();
 
         }
     }
