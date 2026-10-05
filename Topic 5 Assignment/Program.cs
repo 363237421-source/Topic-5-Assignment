@@ -157,34 +157,35 @@
             int points = 0;
             string answer;
 
-            Typer("Hello, I will be asking you 4 questions to test your knowledege.");
+            Typer("Hello, I will be asking you 5 questions to test your knowledege.");
             Typer("Press enter to begin");
+            Console.ReadLine();
             Console.WriteLine();
             Typer("First question...");
             Typer("What is the capital of France?");
             answer = Console.ReadLine().ToLower();
             if (answer == "paris")
             {
-                Typer("Correct! 1/4 questions answered.");
-                points =+ 1;
+                Typer("Correct! 1/5 questions answered.");
+                points =+ points + 1;
             }
             else
             {
-                Typer("Wrong! 1/4 questions answered.");
+                Typer("Wrong! 1/5 questions answered.");
             }
             
             Console.WriteLine();
             Typer("Next question...");
             Typer("What time does school start?");
-            answer = Console.ReadLine();
-            if (answer == "8:20")
+            answer = Console.ReadLine().ToLower();
+            if (answer == "8:20" || answer == "8:20am")
             {
-                Typer("Correct! 2/4 questions answered.");
-                points =+ 1;
+                Typer("Correct! 2/5 questions answered.");
+                points =+ points + 1;
             }
             else
             {
-                Typer("Wrong! 2/4 questions answered.");
+                Typer("Wrong! 2/5 questions answered.");
             }
 
             Console.WriteLine();
@@ -193,12 +194,26 @@
             answer = Console.ReadLine();
             if (answer == "E=mc^2")
             {
-                Typer("Correct! 3/4 questions answered.");
-                points =+ 1;
+                Typer("Correct! 3/5 questions answered.");
+                points =+ points + 1;
             }
             else
             {
-                Typer("Wrong! 3/4 questions answered.");
+                Typer("Wrong! 3/5 questions answered.");
+            }
+
+            Console.WriteLine();
+            Typer("Next question...");
+            Typer("True or False. Did Leonardo Dicaprio paint the orginal Mona Lisa painting?");
+            answer = Console.ReadLine().ToLower();
+            if (answer == "false")
+            {
+                Typer("Correct! Leonardo Dicaprio did not paint the orginal Mona Lisa. 4/5 questions answered");
+                points =+ points +1;
+            }
+            else
+            {
+                Typer("Wrong! Leonardo Dicaprio did not paint the orginal Mona Lisa. 4/5 questions answered");
             }
 
             Console.WriteLine();
@@ -206,15 +221,20 @@
             Console.ReadLine();
             Typer("Alright then, how many digits of pi is needed to calculate the circumference");
             Typer("of the entire observable universe with an error margin smaller than a single hydrogen atom?");
-            answer = Console.ReadLine();
-            if (answer == "39" || answer == "40")   //ANSWER HERE
+            Typer("a) 13");
+            Thread.Sleep(1500);
+            Typer("b) 23");
+            Thread.Sleep(1500);
+            Typer("c) 39");
+            answer = Console.ReadLine().ToLower();
+            if (answer == "39" || answer == "c)" || answer == "c")   //ANSWER HERE
             {
-                Typer("Wow! You got that correct! 4/4 questions answered press enter to see how well you did.");
-                points =+ 1;
+                Typer("Wow! You got that correct! 5/5 questions answered press enter to see how well you did.");
+                points =+ points + 1;
             }
             else
             {
-                Typer("Wrong...");
+                Typer("Wrong... 5/5 questions answered.");
                 Thread.Sleep(1000);
                 Typer("...");
                 Thread.Sleep(1000);
@@ -225,7 +245,19 @@
             Console.ReadLine();
 
             Console.WriteLine();
-            TyperInd("Thank you for answering my questions. Out of the 4 questions you got " + points + " correct");
+            if (points == 5)
+            {
+                Typer("Congratulations! You got all the answeres correct, you must be a genius!");
+            }
+            else if (points == 0)
+            {
+                Typer("Huh, you answered all my questions wrong. You must be having a bad day.");
+            }
+            else
+            {
+                Typer("Thank you for answering my questions. Out of the 4 questions you got " + points + " correct");
+            }
+
             Thread.Sleep(4000);
             TyperInd(".............. you may now leave. =)");
         }
