@@ -29,7 +29,7 @@
         {
 
             double weight;
-            string planet, venus, mars, jupiter, saturn, uranus, neptune;
+            string planet;
             bool done = false;
 
 
@@ -255,7 +255,7 @@
             }
             else
             {
-                Typer("Thank you for answering my questions. Out of the 4 questions you got " + points + " correct");
+                Typer("Thank you for answering my questions. Out of the 5 questions you got " + points + " correct");
             }
 
             Thread.Sleep(4000);
